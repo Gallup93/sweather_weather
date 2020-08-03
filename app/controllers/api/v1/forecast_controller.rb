@@ -32,7 +32,7 @@ class Api::V1::ForecastController < ApplicationController
       elsif tracker == :current
         relevant_data[:current] = forecast_json[:current].extract!(:dt,:temp,:weather,:sunrise,:sunset,:feels_like,:humidity,:uvi,:visibility)
       elsif tracker == :hourly
-        relevant_data[:hourly] = forecast_json[:hourly].map {|hour| hour.extract!(:dt,:temp,:weather)}
+        relevant_data[:hourly] = forecast_json[:hourly].map {|hour| hour.extract!(:temp,:weather,:dt)}
       else
         relevant_data[:daily] = forecast_json[:daily].map {|day| day.extract!(:temp,:weather,:rain)}
       end
