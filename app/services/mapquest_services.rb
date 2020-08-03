@@ -7,12 +7,9 @@ class MapquestServices
   end
 
   def get_trail_distance(trail_location, starting_location)
-
-    conn = Faraday.new(url: "https://www.mapquestapi.com/geocoding/v1/")
+    conn = Faraday.new(url: "https://www.mapquestapi.com/")
     response = conn.get("directions/v2/route?key=#{ENV['MAPQUEST_KEY']}&from=#{starting_location.split(",")[0]}%2C+#{starting_location.split(",")[1]}&to=#{trail_location.split(",")[0]}%2C+#{trail_location.split(",")[1].strip}&outFormat=json&ambiguities=ignore&routeType=fastest&doReverseGeocode=false&enhancedNarrative=false&avoidTimedConditions=false")
-    require "pry";binding.pry
     parsed = JSON.parse(response.body, symbolize_names: true)
-
-    require "pry";binding.pry
+    parsed[:route][:distance]
   end
 end

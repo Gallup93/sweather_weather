@@ -2,10 +2,13 @@ class Api::V1::TrailsController < ApplicationController
   def index
     forecast_json = get_forecast(get_coordinates(params["location"]))
     parsed_forecast = parse_trail_forecast(forecast_json)
+    parsed_forecast[:location] = params["location"]
 
     trails_json = get_trails(get_coordinates(params["location"]))
     parsed_trails = parse_trail_data(trails_json)
-    require "pry";binding.pry
+
+    result = {:attributes => parsed_forecast, :trails => parsed_trails}
+    render json: result
   end
 
   private
@@ -21,9 +24,8 @@ class Api::V1::TrailsController < ApplicationController
     temp = Hash.new
     trails_json[:trails].each do |trail|
       temp = trail.extract!(:name, :summary, :difficulty, :location)
-      trail_coords = trail.extract!(:longitude, :latitude)
       distance = get_distance_to_trail(temp[:location])
-      require "pry";binding.pry
+      temp[:distance] = distance
       parsed_trails << temp
       temp = Hash.new
     end
