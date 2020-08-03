@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
-  def get_coordinates
-    location = params["location"].split(",")
+  def get_coordinates(location)
+    location = location.split(",")
     MapquestServices.new.get_city_lat_lon(location[0], location[1])
   end
 
@@ -10,6 +10,10 @@ class ApplicationController < ActionController::API
 
   def get_trails(coordinates)
     HikingServices.new.get_trails_nearby(coordinates)
+  end
+
+  def get_distance_to_trail(trail_location)
+    MapquestServices.new.get_trail_distance(trail_location, params["location"])
   end
 
   def parse_forecast(forecast_json)
