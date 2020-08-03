@@ -2,7 +2,6 @@ class Api::V1::TrailsController < ApplicationController
   def index
     forecast_json = get_forecast(get_coordinates(params["location"]))
     parsed_forecast = parse_trail_forecast(forecast_json)
-    parsed_forecast[:location] = params["location"]
 
     trails_json = get_trails(get_coordinates(params["location"]))
     parsed_trails = parse_trail_data(trails_json)
@@ -16,6 +15,7 @@ class Api::V1::TrailsController < ApplicationController
   def parse_trail_forecast(forecast_json)
     temp_weather = forecast_json[:current].extract!(:temp,:weather)
     temp_weather[:weather] = temp_weather[:weather][0][:description]
+    temp_weather[:location] = params["location"]
     temp_weather
   end
 
