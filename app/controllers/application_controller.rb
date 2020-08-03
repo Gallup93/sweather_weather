@@ -8,6 +8,10 @@ class ApplicationController < ActionController::API
     OpenweatherServices.new.get_forecast_by_lat_lng(coordinates)
   end
 
+  def get_trails(coordinates)
+    HikingServices.new.get_trails_nearby(coordinates)
+  end
+
   def parse_forecast(forecast_json)
     relevant_data = {:general => {}, :current => {}, :hourly => [], :daily => []}
 

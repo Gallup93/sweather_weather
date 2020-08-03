@@ -3,7 +3,7 @@ class Api::V1::TrailsController < ApplicationController
     forecast_json = get_forecast(get_coordinates)
     parsed_forecast = parse_trail_forecast(forecast_json)
     # forecast_object = Forecast.create(parsed_json)
-    require "pry";binding.pry
+    trails_json = get_trails(get_coordinates)
   end
 
   private
