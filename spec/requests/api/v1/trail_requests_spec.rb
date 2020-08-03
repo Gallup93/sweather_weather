@@ -10,6 +10,7 @@ describe "expose trail end points" do
     trail_info = JSON.parse(trail_response.body, symbolize_names: true)
     attr_keys = [:temp, :weather, :location]
     trail_keys = [:name, :summary, :difficulty, :location, :distance]
+    
     expect(trail_info[:attributes].keys).to eq(attr_keys)
     expect(trail_info[:trails][0].keys).to eq(trail_keys)
   end
