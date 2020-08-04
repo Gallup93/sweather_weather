@@ -14,6 +14,6 @@ class LocationData
   end
 
   def get_forecast
-    OpenweatherServices.new.get_forecast_by_lat_lng(@lat, @lon)
+    OpenweatherServices.new.get_forecast_by_lat_lng(@lat, @long)
   end
 end
