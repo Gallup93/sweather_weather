@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3000/api/v1/trails?location=denver,co
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"c9b86556ad47bd41fcfc1b7d38c29c92"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - da05c979-4592-4cd8-9741-81c8a5239532
+      X-Runtime:
+      - '5.000042'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":null,"type":"trail","attributes":{"location":"denver
+        co","forecast":{"summary":"light rain","temperature":76.35}},"trails":[{"name":"Boulder
+        Skyline Traverse","summary":"The classic long mountain route in Boulder.","difficulty":"black","location":"Superior,
+        Colorado","distance":23.008},{"name":"Bear Peak Out and Back","summary":"A
+        must-do hike for Boulder locals and visitors alike!","difficulty":"black","location":"Boulder,
+        Colorado","distance":30.098},{"name":"Sunshine Lion''s Lair Loop","summary":"Great
+        Mount Sanitas views are the reward for this gentler loop in Sunshine Canyon.","difficulty":"blueBlack","location":"Boulder,
+        Colorado","distance":30.098},{"name":"Green Mountain via Ranger/Saddle Rock
+        Loop","summary":"A loop with a variety of terrain, a lot of climbing, and
+        great views of Boulder.","difficulty":"black","location":"Boulder, Colorado","distance":30.098},{"name":"Walker
+        Ranch","summary":"An awesome and challenging hike near Boulder with great
+        scenery.","difficulty":"blueBlack","location":"Coal Creek, Colorado","distance":32.037},{"name":"Royal
+        Arch Out and Back","summary":"A classic Boulder hike to a natural arch with
+        great views.","difficulty":"black","location":"Boulder, Colorado","distance":30.098},{"name":"Mount
+        Sanitas Loop","summary":"Very popular and scenic loop right from the edge
+        of town.","difficulty":"blueBlack","location":"Boulder, Colorado","distance":30.098},{"name":"Mt.
+        Galbraith Park Loop","summary":"A fun singletrack lollipop loop up and around
+        Mt. Galbraith''s peak with views in all directions.","difficulty":"blueBlack","location":"Golden,
+        Colorado","distance":14.727},{"name":"North Table Loop Trail","summary":"A
+        rolling grassland trail that circumnavigates North Table Mountain.","difficulty":"blue","location":"Golden,
+        Colorado","distance":14.727},{"name":"Betasso Preserve","summary":"This hike
+        is easily accessible from Boulder and offers amazing singletrack with beautiful
+        views.","difficulty":"blue","location":"Boulder, Colorado","distance":30.098}]}}'
+  recorded_at: Tue, 04 Aug 2020 02:22:12 GMT
+recorded_with: VCR 6.0.0
