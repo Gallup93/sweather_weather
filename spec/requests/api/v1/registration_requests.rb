@@ -6,6 +6,9 @@ describe "expose ReST end points" do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.status).to eq(201)
+      expect(json[:data].keys).to eq([:id,:type,:attributes])
+      expect(json[:data][:type]).to eq("users")
+      expect(json[:data][:attributes][:email]).to eq("turing@aol.com")
+      expect(json[:data][:attributes][:api_key].length).to eq(30)
     end
   end

@@ -11,6 +11,6 @@ class User < ApplicationRecord
   private
 
   def get_api_key
-    self.api_key = SecureRandom.hex(27)
+    self.api_key = SecureRandom.hex(15)
   end
 end
