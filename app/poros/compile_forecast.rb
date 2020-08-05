@@ -1,32 +1,38 @@
 class CompileForecast
   def initialize(location)
-    location = LocationData.new(location)
-    forecast_json = location.get_forecast
-    parsed_json = parse_forecast(forecast_json)
-    Forecast.create(parsed_json)
+    @location = LocationData.new(location)
+    @forecast_json = @location.get_forecast
   end
 
-  private
-
-  def parse_forecast(forecast_json)
+  def landing_page_forecast
     relevant_data = {:general => {}, :current => {}, :hourly => [], :daily => []}
 
     tracker = nil
 
-    forecast_json.each do |key, value|
+    @forecast_json.each do |key, value|
+      relevant_data[:general][:location] = @location.city_state
       if relevant_data.keys.any?(key)
         tracker = key
       end
       if tracker == nil
         relevant_data[:general][key] = value
       elsif tracker == :current
-        relevant_data[:current] = forecast_json[:current].extract!(:dt,:temp,:weather,:sunrise,:sunset,:feels_like,:humidity,:uvi,:visibility)
+        relevant_data[:current] = @forecast_json[:current].extract!(:dt,:temp,:weather,:sunrise,:sunset,:feels_like,:humidity,:uvi,:visibility)
       elsif tracker == :hourly
-        relevant_data[:hourly] = forecast_json[:hourly].map {|hour| hour.extract!(:temp,:weather,:dt)}
+        relevant_data[:hourly] = @forecast_json[:hourly].map {|hour| hour.extract!(:temp,:weather,:dt)}
       else
-        relevant_data[:daily] = forecast_json[:daily].map {|day| day.extract!(:temp,:weather,:rain)}
+        relevant_data[:daily] = @forecast_json[:daily].map {|day| day.extract!(:temp,:weather,:rain)}
       end
     end
+    Forecast.create(relevant_data)
+  end
+
+  def trip_forecast(travel_time)
+    minutes = travel_time.to_f / 60
+    hours = minutes / 60
+    relevant_data = Hash.new
+    relevant_data[:temp] = @forecast_json[:hourly][hours.round()][:temp]
+    relevant_data[:summary] = @forecast_json[:hourly][hours.round()][:weather][0][:description]
     relevant_data
   end
 end

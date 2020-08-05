@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rspec-rails'
 gem 'fast_jsonapi'
 gem 'faraday'
+gem 'bcrypt'
 
 group :test do
     gem 'webmock'
