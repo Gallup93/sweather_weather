@@ -1,12 +1,11 @@
 class CompileForecast
   def initialize(location)
-    @location = LocationData.new(location)
+    @location = CompileLocationData.new(location)
     @forecast_json = @location.get_forecast
   end
 
   def landing_page_forecast
     relevant_data = {:general => {}, :current => {}, :hourly => [], :daily => []}
-
 
     tracker = nil
 

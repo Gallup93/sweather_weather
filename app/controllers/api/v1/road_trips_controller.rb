@@ -7,6 +7,5 @@ class Api::V1::RoadTripsController < ApplicationController
     else
       render json: ["unauthorized"], status: :unauthorized
     end
-
   end
 end

@@ -1,4 +1,4 @@
-class LocationData
+class CompileLocationData
   attr_reader :city_state, :lat, :long, :details
   def initialize(location)
     @city_state = location.split(",")
