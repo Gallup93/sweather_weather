@@ -1,7 +1,7 @@
 class CompileForecast
   def initialize(location)
     @location = CompileLocationData.new(location)
-    @forecast_json = @location.get_forecast
+    @forecast_json = @location.forecast
   end
 
   def landing_page_forecast
@@ -32,10 +32,11 @@ class CompileForecast
 
   def trip_forecast(travel_time)
     minutes = travel_time.to_f / 60
-    hours = minutes / 60
+    hours = (minutes / 60).round
+    arrival_hour = (Time.now.hour + hours)
     relevant_data = Hash.new
-    relevant_data[:temp] = @forecast_json[:hourly][hours.round()][:temp]
-    relevant_data[:summary] = @forecast_json[:hourly][hours.round()][:weather][0][:description]
+    relevant_data[:temp] = @forecast_json[:hourly][arrival_hour][:temp]
+    relevant_data[:summary] = @forecast_json[:hourly][arrival_hour][:weather][0][:description]
     relevant_data
   end
 end

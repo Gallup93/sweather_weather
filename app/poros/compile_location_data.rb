@@ -1,12 +1,20 @@
 class CompileLocationData
-  attr_reader :city_state, :lat, :long, :details
+  attr_reader :city_state, :lat, :long, :details, :forecast
   def initialize(location)
     @city_state = location.split(",")
     @lat = nil
     @long = nil
     @details = nil
+    @forecast = nil
+    populate
+  end
+
+  private
+
+  def populate
     get_coordinates
     get_info_by_coordinates
+    get_forecast
   end
 
   def get_coordinates
@@ -20,6 +28,6 @@ class CompileLocationData
   end
 
   def get_forecast
-    OpenweatherServices.new.get_forecast_by_lat_lng(@lat, @long)
+    @forecast = OpenweatherServices.new.get_forecast_by_lat_lng(@lat, @long)
   end
 end
