@@ -7,10 +7,14 @@ class CompileForecast
   def landing_page_forecast
     relevant_data = {:general => {}, :current => {}, :hourly => [], :daily => []}
 
+
     tracker = nil
 
     @forecast_json.each do |key, value|
-      relevant_data[:general][:location] = @location.city_state
+      relevant_data[:general][:city] = @location.details[:city]
+      relevant_data[:general][:state] = @location.details[:state]
+      relevant_data[:general][:country] = @location.details[:country]
+
       if relevant_data.keys.any?(key)
         tracker = key
       end
