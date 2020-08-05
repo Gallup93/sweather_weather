@@ -10,6 +10,7 @@ class CompileForecast
     tracker = nil
 
     @forecast_json.each do |key, value|
+      relevant_data[:general][:location] = @location.city_state
       if relevant_data.keys.any?(key)
         tracker = key
       end

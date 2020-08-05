@@ -8,7 +8,7 @@ describe "expose ReST end points" do
       expect(response.status).to eq(200)
 
       forecast = JSON.parse(response.body, symbolize_names: true)
-      general_keys = ([:lat, :lon, :timezone, :timezone_offset])
+      general_keys = ([:location, :lat, :lon, :timezone, :timezone_offset])
       weather_keys = ([:id,:main,:description,:icon])
 
       expect(forecast[:data][:attributes][:general].keys).to eq(general_keys)
