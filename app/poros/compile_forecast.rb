@@ -20,7 +20,9 @@ class CompileForecast
       if tracker == nil
         relevant_data[:general][key] = value
       elsif tracker == :current
-        relevant_data[:current] = @forecast_json[:current].extract!(:dt,:temp,:weather,:sunrise,:sunset,:feels_like,:humidity,:uvi,:visibility)
+        relevant_data[:current] = @forecast_json[:current].
+                      extract!(:dt,:temp,:weather,:sunrise,:sunset,
+                            :feels_like,:humidity,:uvi,:visibility)
       elsif tracker == :hourly
         relevant_data[:hourly] = @forecast_json[:hourly].map {|hour| hour.extract!(:temp,:weather,:dt)}
       else
@@ -39,4 +41,5 @@ class CompileForecast
     relevant_data[:summary] = @forecast_json[:hourly][arrival_hour][:weather][0][:description]
     relevant_data
   end
+
 end
