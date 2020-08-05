@@ -21,17 +21,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"b0b22fea337b432cfc889afd3048e1c9"
+      - W/"2490ab3da9182a5126af85ac18a4dd3e"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 65c2dc1d-a304-4afb-a746-f6a6f9d57da2
+      - a0b1aa30-73dc-43be-be1f-891d6e476499
       X-Runtime:
-      - '0.322100'
+      - '0.225570'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"url":"https://images.unsplash.com/photo-1581378670696-6bb27d6e450b?ixlib=rb-1.2.1\u0026q=80\u0026fm=jpg\u0026crop=entropy\u0026cs=tinysrgb\u0026w=1080\u0026fit=max\u0026ixid=eyJhcHBfaWQiOjE1NDAzNn0"}'
-  recorded_at: Wed, 05 Aug 2020 01:02:38 GMT
+      string: '{"url":"https://images.unsplash.com/photo-1584289537592-2d14b39c5162?ixlib=rb-1.2.1\u0026q=80\u0026fm=jpg\u0026crop=entropy\u0026cs=tinysrgb\u0026w=1080\u0026fit=max\u0026ixid=eyJhcHBfaWQiOjE1NDAzNn0"}'
+  recorded_at: Wed, 05 Aug 2020 03:37:00 GMT
 recorded_with: VCR 6.0.0
