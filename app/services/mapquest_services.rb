@@ -29,4 +29,5 @@ class MapquestServices
     relevant_data[:country] = parsed[:results][0][:locations][0][:adminArea1]
     relevant_data
   end
+    #update mapquest key and test travis-ci
 end
